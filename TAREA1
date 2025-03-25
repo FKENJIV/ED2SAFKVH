@@ -1,0 +1,60 @@
+class Persona:
+    """Clase deuna persona con nombre,edad y dirección."""
+    
+    def __init__(self, nombre: str, edad: int, direccion:str):
+        self._nombre=nombre
+        self._edad=edad
+        self._direccion=direccion
+    
+    @property
+    def nombre(self) -> str:
+        """Getter para el atributo nombre."""
+        return self._nombre
+    
+    @nombre.setter
+    def nombre(self, nuevo_nombre: str) -> None:
+        """Setter para el atributo nombre."""
+        if isinstance(nuevo_nombre, str) and nuevo_nombre.strip():
+            self._nombre = nuevo_nombre
+        else:
+            raise ValueError("El nombre debe ser una cadena no vacía.")
+    
+    @property
+    def edad(self) -> int:
+        """Getter del atributo edad."""
+        return self._edad
+    
+    @edad.setter
+    def edad(self, nueva_edad: int) -> None:
+        """Setter para el atributo edad."""
+        if isinstance(nueva_edad, int) and nueva_edad > 0:
+            self._edad = nueva_edad
+        else:
+            raise ValueError("La edad debe ser un número entero positivo.")
+    
+    @property
+    def direccion(self) -> str:
+        """Getter para el atributo dirección."""
+        return self._direccion
+    @direccion.setter
+    def direccion(self, nueva_direccion: str) -> None:
+        """Setter para el atributo dirección."""
+        if isinstance(nueva_direccion, str) and nueva_direccion.strip():
+            self._direccion = nueva_direccion
+        else:
+            raise ValueError("La dirección debe ser una cadena no vacía.")
+    def mostrar_info(self) -> str:
+        """Devuelve una representación en cadena de la información de la persona."""
+        return (f"Nombre: {self._nombre}, Edad: {self._edad}, "
+                f"Dirección: {self._direccion}")
+
+# Ejemplos
+#Nombre y dirección
+persona = Persona("Fernando Villarroel", 30, "Calle XD #2223")
+print(persona.mostrar_info())  # Nombre: Fernando Villarroel, Edad: 22, Dirección: Calle XD #222
+
+#Nombre,edad y dirección
+persona.nombre = "Juan"
+persona.edad = 25
+persona.direccion = "Av. XDD #724"
+print(persona.mostrar_info())  # Nombre:Juan, Edad: 25, Dirección: Av. XDD #724
